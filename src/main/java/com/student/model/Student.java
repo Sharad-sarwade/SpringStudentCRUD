@@ -1,0 +1,56 @@
+package com.student.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "student")
+public class Student {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String sname;
+	private String sgender;
+	private String sclass;
+	private int smarks;
+	public int getRnumber() {
+		return id;
+	}
+	public void setRnumber(int id) {
+		this.id = id;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public String getSgender() {
+		return sgender;
+	}
+	public void setSgender(String sgender) {
+		this.sgender = sgender;
+	}
+	public String getSclass() {
+		return sclass;
+	}
+	public void setSclass(String sclass) {
+		this.sclass = sclass;
+	}
+	public int getSmarks() {
+		return smarks;
+	}
+	public void setSmarks(int smarks) {
+		this.smarks = smarks;
+	}
+	@Override
+	public String toString() {
+		return "Student [rnumber=" + id + ", sname=" + sname + ", sgender=" + sgender + ", sclass=" + sclass
+				+ ", smarks=" + smarks + "]";
+	}
+	
+	
+}
