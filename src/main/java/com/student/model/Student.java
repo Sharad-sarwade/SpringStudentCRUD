@@ -1,5 +1,6 @@
 package com.student.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,14 +13,18 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column
 	private String sname;
+	@Column
 	private String sgender;
+	@Column
 	private String sclass;
+	@Column
 	private int smarks;
-	public int getRnumber() {
+	public int getId() {
 		return id;
 	}
-	public void setRnumber(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getSname() {
@@ -48,9 +53,10 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "Student [rnumber=" + id + ", sname=" + sname + ", sgender=" + sgender + ", sclass=" + sclass
-				+ ", smarks=" + smarks + "]";
+		return "Student [id=" + id + ", sname=" + sname + ", sgender=" + sgender + ", sclass=" + sclass + ", smarks="
+				+ smarks + "]";
 	}
+	
 	
 	
 }

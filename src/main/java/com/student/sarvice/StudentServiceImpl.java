@@ -9,17 +9,18 @@ import org.springframework.stereotype.Service;
 import com.student.dao.StudentDao;
 import com.student.model.Student;
 @Service
-public class StudentServiceImpl implements StudentService{
+public  class StudentServiceImpl implements StudentService{
+	List<Student> slist;
 	@Autowired
 	StudentDao studentDao;
 	@Override
 	public List<Student> getAllData() {
-		List<Student> slist = new ArrayList();
+		slist = new ArrayList<Student>();
 		studentDao.findAll().forEach(std ->slist.add(std));
 		return slist;
 	}
 	@Override
-	public Student getStudentById(int id) {
+	public Student getIdData(int id) {
 		Student student = studentDao.findById(id).get();
 		return student;
 	}
@@ -32,10 +33,13 @@ public class StudentServiceImpl implements StudentService{
 	public void deleteStudent(int id) {
 		studentDao.deleteById(id);
 	}
+	
+	// update data
 	@Override
-	public Student updateStudent(Student student) {
-		return studentDao.save(student);
+	public void updateStudent(Student student) {
 		
+		
+		studentDao.save(student);
 	}
 	
 

@@ -26,25 +26,33 @@ public class StudentController {
 		List<Student> slist = studentServiceImpl.getAllData();
 		return slist;
 	}
-	@GetMapping("/get {id}")
-	public Student getStudent(@PathVariable("{id}") int id) {
-		Student getstudent = studentServiceImpl.getStudentById(id);
-		return getstudent;
+	@GetMapping("/get/{id}") //1
+	public Student getIdData(@PathVariable("id") int id)
+	{
+		Student sonestd= studentServiceImpl.getIdData(id);
+		 return sonestd;
 	}
+	
 	@PostMapping("/save")
-	public Student saveStudent(@RequestBody Student student) {
-		Student savestudent = studentServiceImpl.saveStudent(student);
-		return savestudent;
+	public Student saveEmployee(@RequestBody Student student)
+	{
+		Student savedEmployee= studentServiceImpl.saveStudent(student);
+		 return savedEmployee;
 	}
-	@DeleteMapping("/delete {id}")
-	public String deletStudent(@PathVariable("{id}") int id) {
+	
+	@DeleteMapping("/delete/{id}")
+	public void deleteEmployeeById(@PathVariable("id") int id)
+	{
 		studentServiceImpl.deleteStudent(id);
-		return "Record deleted..!";
+		System.out.println("Student of "+id+" is deleted ....");
 	}
-	@PutMapping("/update")
-	public Student updateStudent(Student student) {
-		Student updateStudent = studentServiceImpl.updateStudent(student);
-		return updateStudent;
-		
+	
+	@PutMapping("/update/{id}")
+	public Student updateStudent(@RequestBody Student student, @PathVariable("id") int id)
+	{	
+		student.setId(id);
+		studentServiceImpl.updateStudent(student);
+		return student;
 	}
+	
 }
